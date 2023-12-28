@@ -40,6 +40,42 @@ $(document).ready(function() {
     $("#week-tasks").click(function() {
         getTasksForThisWeek();
     });
+
+    let dateFormat = "mm/dd/yy",
+        from = $( "#from" )
+            .datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1
+            })
+            .on( "change", function() {
+                to.datepicker( "option", "minDate", getDate( this ) );
+            }),
+        to = $( "#to" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on( "change", function() {
+            from.datepicker( "option", "maxDate", getDate( this ) );
+        });
+  
+    function getDate( element ) {
+        let date;
+        try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+        } catch( error ) {
+            date = null;
+        }
+        return date;
+    }
+
+    // Обработчик кнопки показа задач по диапазону
+    $('#range-tasks').click(function() {
+        let startDate = $('#from').val();
+        let endDate = $('#to').val();
+        getTasksByDateRange(startDate, endDate);
+    });
 });
 
 function searchTasks(query) {
@@ -105,3 +141,4 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
