@@ -6,6 +6,25 @@ $(document).ready(function() {
         }
     });
 
+    $('#tasks-list').on('click', '.task', function() {
+        // Добавьте информацию о задаче в модальное окно
+        $("#taskDescription").text("Описание для задачи " + $(this).text());
+        // Откройте модальное окно
+        $("#taskModal").show();
+    });
+
+    // Закрытие модального окна при клике на крестик
+    $('.close').on('click', function() {
+        $("#taskModal").hide();
+    });
+
+    // Закрытие модального окна при клике за его пределами
+    $(window).on('click', function(event) {
+        if ($(event.target).is('#taskModal')) {
+            $("#taskModal").hide();
+        }
+    });
+
     // Обработчик поиска задач
     $("#search-box").on("input", function() {
         let query = $(this).val();
@@ -60,4 +79,29 @@ function displayTasks(tasks) {
 
 function formatDate(date) {
     return date.toISOString().split('T')[0];
+}
+
+// Получите модальное окно
+let modal = document.getElementById("taskModal");
+
+// Получите элемент <span>, который закрывает модальное окно
+let span = document.getElementsByClassName("close")[0];
+
+// Когда пользователь нажимает на задачу, откройте модальное окно
+$('.task').on('click', function() {
+  // Здесь вы можете добавить информацию о задаче в модальное окно
+  document.getElementById("taskDescription").innerHTML = "Описание для задачи " + $(this).text();
+  modal.style.display = "block";
+});
+
+// Когда пользователь нажимает на <span> (x), закройте модальное окно
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Когда пользователь нажимает в любом месте за пределами модального окна, закройте его
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
