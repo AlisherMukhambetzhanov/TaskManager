@@ -24,7 +24,7 @@ $(document).ready(function() {
 });
 
 function searchTasks(query) {
-    $.get(`https://todo.doczilla.pro/api/todos/find?q=${query}`, function(data) {
+    $.get(`http://localhost:8000/api/todos/find?q=${query}`, function(data) {
         displayTasks(data);
     });
 }
@@ -42,7 +42,7 @@ function getTasksForThisWeek() {
 }
 
 function getTasksByDateRange(startDate, endDate = startDate) {
-    $.get(`https://todo.doczilla.pro/api/todos/date?from=${new Date(startDate).getTime()}&to=${new Date(endDate).getTime()}`, function(data) {
+    $.get(`http://localhost:8000/api/todos/date?from=${new Date(startDate).getTime()}&to=${new Date(endDate).getTime()}`, function(data) {
         displayTasks(data);
     });
 }
