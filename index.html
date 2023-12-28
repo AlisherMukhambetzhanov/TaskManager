@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <!-- Подключение jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Подключение jQuery UI для календаря -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Подключение собственного CSS файла -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="todo-app">
+        <input type="text" id="search-box" placeholder="Поиск задач...">
+        <div id="calendar"></div>
+        <button id="today-tasks">Задачи на сегодня</button>
+        <button id="week-tasks">Задачи на эту неделю</button>
+        <div id="tasks-list"></div>
+    </div>
+
+    <!-- Подключение собственного JavaScript файла -->
+    <script src="script.js"></script>
+</body>
+</html>
