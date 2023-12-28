@@ -1,0 +1,9 @@
+#todo-app {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+#search-box, #calendar, #today-tasks, #week-tasks {
+    margin-bottom: 10px;
+}
